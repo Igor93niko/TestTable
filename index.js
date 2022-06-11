@@ -1,6 +1,8 @@
 const express = require('express');
 const pool = require('./queries');
 const path = require('path');
+const names = require('./name.json');
+
 require('dotenv').config();
 
 const app = express();
@@ -15,32 +17,30 @@ app.get('/get',(req,res)=>{
   });
 });
 
-app.get('/create',(req,res)=>{
+app.get('/create/table',(req,res)=>{
   pool.query('CREATE TABLE Distance(date DATE, name varchar(255),count int, distance int)',[],(err, result)=>{
-    res.json({result});
+    res.json({ok});
   });
 });
 
 app.get('/create/data',(req,res)=>{
-  const date = '02-04-2022';
-  for (let i=1; i<30; i++)
+  const today = new Date(Date.now());
+  const maxName = names.name.length;
+  for (let i=1; i<32; i++)
   {
     const count = Math.floor(Math.random() * 100);
     const dist = Math.floor(Math.random()*200);
-    const name = `Super ${i}`;
-    console.log(name,count,dist);
-    pool.query('INSERT INTO Distance (date, name, count, distance) VALUES ($1,$2,$3,$4)',[date,name,count,dist],(err, result)=>{
-    console.log(err);
+    const numName = Math.floor(Math.random()*(maxName-1));
+    const name = names.name[numName];
+    pool.query('INSERT INTO Distance (date, name, count, distance) VALUES ($1,$2,$3,$4)',[today,name,count,dist],(err, result)=>{
     })
   }
   res.json('ok');
 });
 
 if (process.env.PRODUCTION == 'true'){
-  console.log(1);
   app.use('/',express.static(path.join(__dirname,'/client','build')));
   app.get('*',(req,res)=>{
-    console.log(1);
     res.sendFile(
       path.resolve(__dirname,'client','build','index.html'));}
     );
