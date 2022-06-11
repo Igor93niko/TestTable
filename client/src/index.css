@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+body {
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.mainTable
+{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.mainTable table
+{
+  border-collapse: separate;
+  border-spacing: 0 0;
+  font-family: 'Roboto';
+  width: 80%;
+  border: solid 1px black;
+}
+
+.mainTable table td,
+.mainTable table th
+{
+  padding: 5px 10px;
+  border: solid 1px black;
+}
+
+
+.iconSort
+{
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+
+.tableHead
+{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.filter
+{
+  margin: 2rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.filter .filterSelect
+{
+  width: 150px;
+  font-size: 1rem;
+}
+
+.filter input
+{
+  font-size: 1rem;
+}
+
+.pagination
+{
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.pagination button
+{
+  padding: 3px 8px;
+  border: rgb(36, 36, 246) solid 1px;
+  background: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.pagination .active
+{
+  box-shadow: rgb(40, 122, 216) 0 0 10px;
+}
