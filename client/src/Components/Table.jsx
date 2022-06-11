@@ -81,7 +81,7 @@ const Table = () => {
             }
           case 'contains':
             {
-              const index = field[filtVariant.filColl].indexOf(filtVariant.filValue);
+              const index = (''+field[filtVariant.filColl]).indexOf(filtVariant.filValue);
               if (index === -1)
               {
                 return false;
